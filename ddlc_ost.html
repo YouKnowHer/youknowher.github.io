@@ -2,17 +2,9 @@
 <!--TRYING TO STEAL MY SOURCE CODE LITANDUS? MY HOW THE TABLES HAVE TURNED-->
 <title>Doki Doki Literature Club! OST visuals remake</title>
 <style>
-p {
-	font-family: Journal;
-	font-size: 37px;
-	position: absolute;
-	z-index: 5;
-	left: 48px;
-	top: 548px;
-}
-#back{
+.back{
 	background:url(http://ddlc.moe/images/tilebg.png);
-	position: relative;
+	position: absolute;
 	left:0;
 	top:0;
 	z-index: -1;
@@ -47,17 +39,52 @@ p {
 		transform:translate(-200px,-200px)
 	}
 }
+p {font-family: Journal;font-size: 37px;}
+#y{position:absolute;left:456px;top: 11px;z-index:1}
+#n{position:absolute;left:634px;top: 72px;z-index:2}
+#s{position:absolute;left:370px;top:133px;z-index:3}
+#m{position:absolute;left:699px;top:100px;z-index:4}
+#i{display:none}
+#o{display:block}
 </style>
-<body style="background-color:black;">
-	<div style="color:white;">DDLC by Team Salvato. Site by TurretBot. <a href="https://www.reddit.com/comments/7xtvt3" style="color:white;">Reddit post.</a></div>
-	<div style="overflow:hidden;height:720px;width:1280px;position:relative;margin:auto;">
-		<div id="back"></div>
-		<img style="position:absolute;left:49px;top:49px" width=222 height=222 src="http://ddlc.moe/images/logo.png">
-		<img style="position:absolute;left:456px;top:11px;z-index:1" width=288.6 height=648  src="https://ddlcwiki.ga/w/images/3/38/Menu_art_y.png">
-		<img style="position:absolute;left:634px;top:72px;z-index:2" width=232 height=626.4 src="https://ddlcwiki.ga/w/images/2/2a/Menu_art_n.png">
-		<img style="position:absolute;left:370px;top:133px;z-index:3" width=279.48 height=734.4 src="https://ddlcwiki.ga/w/images/3/39/Menu_art_s.png">
-		<img style="position:absolute;left:699px;top:100px;z-index:4" src="https://ddlcwiki.ga/w/images/c/c9/Menu_art_m.png">
-		<p>Doki Doki Literature Club! OST<br/>13. Your Reality</p>
+<script>
+function letterbox(is) {
+	document.getElementById("i").style.display = is.checked ? "block":"none";
+	document.getElementById("o").style.display = is.checked ? "none":"block";
+	document.getElementById("info").style.color = is.checked ? "white":"black";
+	document.getElementById("box").style.overflow = is.checked ? "hidden":"visible";
+}
+function logokill(is) {document.getElementById("l").style.display = is.checked ? "block":"none";}
+function monikill(is) {document.getElementById("m").style.display = is.checked ? "block":"none";document.getElementById("lol").innerHTML = is.checked ? "":"I deserve this, don't I?";}
+function sayonara(is) {document.getElementById("s").style.display = is.checked ? "block":"none";}
+function natskill(is) {document.getElementById("n").style.display = is.checked ? "block":"none";}
+function yurikill(is) {document.getElementById("y").style.display = is.checked ? "block":"none";}
+function changetext(a) {document.getElementById("text").innerHTML = a.value.replace("\n","<br/>");}
+</script>
+
+<body style="background-color:black;overflow:hidden;">
+	<div id="info" style="position:absolute;font-family:Ammys Handwriting;font-size:20px;">
+		<b>DDLC by Team Salvato. Site by TurretBot. <a style="color:grey" href="https://www.reddit.com/comments/7xtvt3">Reddit post.</a></b>
+		<br/>
+		<br/><input type="checkbox" onchange="letterbox(this)" autocomplete="off"> 1280x720 window (for screenshots)
+		<br/><input type="checkbox" onchange="logokill(this)" autocomplete="off" checked> Logo
+		<br/><input type="checkbox" onchange="yurikill(this)" autocomplete="off" checked> Yuri
+		<br/><input type="checkbox" onchange="natskill(this)" autocomplete="off" checked> Natuski
+		<br/><input type="checkbox" onchange="sayonara(this)" autocomplete="off" checked> Sayori
+		<br/><input type="checkbox" onchange="monikill(this)" autocomplete="off" checked/> Monika
+		<br/><textarea name="text" cols="33" rows="2" onblur="changetext(this)" autocomplete="off" placeholder="Doki Doki Literature Club! OST">Doki Doki Literature Club! OST
+13. Your Reality</textarea>
+		<br/><br/><div id="lol"></div>
+	</div>
+	<div class="back" id="o"></div>
+	<div id="box" style="overflow:visible;height:720px;width:1280px;position:relative;margin:auto;">
+		<div class="back" id="i"></div>
+		<img id="l" style="position:absolute;left:49px;top:49px" width=222 height=222 src="http://ddlc.moe/images/logo.png">
+		<img id="y" width=288.6 height=648 src="https://ddlcwiki.ga/w/images/3/38/Menu_art_y.png">
+		<img id="n" width=232 height=626.4 src="https://ddlcwiki.ga/w/images/2/2a/Menu_art_n.png">
+		<img id="s" width=279.48 height=734.4 src="https://ddlcwiki.ga/w/images/3/39/Menu_art_s.png">
+		<img id="m" style="display:block;" src="https://ddlcwiki.ga/w/images/c/c9/Menu_art_m.png">
+		<p id="text" style="position:absolute;left:48px;top:548px;z-index:5";>Doki Doki Literature Club! OST<br/>13. Your Reality</p>
 	</div>
 </body>
 </html>
