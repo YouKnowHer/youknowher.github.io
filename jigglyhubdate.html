@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body></body>
+<script>
+/*thanks stackoverflow*/
+function addth(i) {
+    var j=i%10,k=i%100;
+    if(j==1&&k!=11){return i + "st";}
+    if(j==2&&k!=12){return i + "nd";}
+    if(j==3&&k!=13){return i + "rd";}
+    return i+"th";
+}
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '');
+var mm = String(today.getMonth() + 1).padStart(2, ''); //January is 0!
+var yyyy = today.getFullYear();
+
+today = mm + '/' + dd + '/' + yyyy;
+
+/*my code below :)*/
+function jigglydate(dayssinceepoch) {
+    var daynames = ["Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"];
+    var monthnames=["","","Jiggly hub platform fighter","Jiggly hub shmup","Jiggly hub RPG","Jiggly hub battle royale","Jiggly hub sandbox","Jiggly hub board game","Jiggly hub porn","Jiggly hub 3D platformer","Jiggly hub visual novel"];
+    var monthstarts=[0,0,41,81,122,162,203,243,284,324];
+
+    var year=1969;
+    var yeardays=0;
+    while(yeardays<dayssinceepoch) {
+        yeardays+=(year%4==0&&(year%100!=0||year%400==0))?366:365;
+        year++;
+    }
+    yeardays-=365
+    //year--;
+    var dayofyear=dayssinceepoch-yeardays;
+
+    if (dayofyear!=0&&dayofyear!=365){
+        var month=0;
+        while(monthstarts[month]<dayofyear) {
+            month++;
+        }
+        var dayofmonth=dayofyear-monthstarts[month-1];
+
+        return (daynames[dayofyear%7]+", "+monthnames[month]+" "+addth(dayofmonth)+", "+year);
+    }else{
+        if(dayofyear==0) year--
+        return ("Jiggly hub rest "+year+(dayofyear==365?"":" (leap day)"));
+    }
+}
+
+document.write("Today ("+today+") is...<br/>"+jigglydate(Math.floor(Date.now()/86400000)+1));
+</script>
+</html>
